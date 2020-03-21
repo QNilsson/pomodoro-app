@@ -151,7 +151,7 @@ export default {
       count: 0
     },
     defaultItem: {
-      task: "Default Item",
+      task: "",
       count: 0
     }
   }),
@@ -228,17 +228,18 @@ export default {
     initialize() {
       this.todos = this.$store.state.todos
     },
-    editItem(item) {
-      this.editedIndex = this.todos.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialog = true;
-    },
-    deleteItem(item) {
+     deleteItem(item) {
       const index = this.todos.indexOf(item);
       console.log(this.todos.indexOf(item).value)
       confirm("are you sure you want to delete item?") &&
         this.todos.splice(index, 1);
     },
+    editItem(item) {
+      this.editedIndex = this.todos.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+   
    
     close() {
       this.dialog = false;
