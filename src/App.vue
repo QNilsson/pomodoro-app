@@ -1,32 +1,21 @@
-<!--App.vue is a Single File Component. It contains three chunks of code:
-HTML, CSS, and Javascript-->
-
 <template>
-  <div id="app" class="container">
-   <CompletedTodos></CompletedTodos>
-   <GetTodo></GetTodo>
-   <CurrentTodos></CurrentTodos>
-  </div>
+  <v-app>
+    
+    <v-content>
+      <Pomodoro />
+    </v-content>
+   
+  </v-app>
 </template>
 
 <script>
-// import Timer from './components/Timer';
-import GetTodo from './components/GetTodo';
-import CurrentTodos from './components/CurrentTodos';
-import CompletedTodos from './components/CompletedTodos';
-
-
+import Pomodoro from './components/Pomodoro';
 export default {
-  components:{
-    GetTodo,
-    CurrentTodos,
-    CompletedTodos
+  name: 'App',
+  computed: {
+  },
+  components: {
+    Pomodoro,
   }
-}
+};
 </script>
-
-<style>
-body{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-</style>
