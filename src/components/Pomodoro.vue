@@ -1,11 +1,11 @@
 <template>
   <v-container fluid class="text-center ml-auto mr-auto deep-orange lighten-2">
     <v-row>
-      <v-col background-color="red">
-        <p class="mt-0 pt-4 display-1 white--text">Number of Items on List</p>
-        <p class="mt-0 pt-0 display-2 white--text">{{this.$store.state.todos.length}}</p>
+     
+      <v-col>
+        <p class="mt-0 pt-4 display-1 white--text">Completed Pomodoros</p>
+        <p class="mt-0 pt-4 display-2 white--text">{{this.$store.state.totalTodo}}</p>
       </v-col>
-      
       <v-col>
         <div>
       <section id="app">
@@ -24,9 +24,9 @@
                 id="start"
                 class="mx-3 my-3"
                 v-if="!timer"
-                @click="playPause()"
+                @click="timerGo()"
               >
-                <p class="font-weight-medium green--text">PAUSED</p>
+                <p class="font-weight-medium green--text">PLAY</p>
               </button>
 
               <button id="stop" class="mx-3 my-3" v-if="timer" @click="pause()">
@@ -46,11 +46,11 @@
       </section>
     </div>
       </v-col>
-      
-      <v-col>
-        <p class="mt-0 pt-4 display-1 white--text">Completed Pomodoros</p>
-        <p class="mt-0 pt-4 display-2 white--text">{{this.$store.state.totalTodo}}</p>
+       <v-col background-color="red">
+        <p class="mt-0 pt-4 display-1 white--text">Number of Items on List</p>
+        <p class="mt-0 pt-0 display-2 white--text">{{this.$store.state.todos.length}}</p>
       </v-col>
+      
     </v-row>    
     
     
@@ -86,7 +86,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <v-btn x-large class="mb-2 py-3 ml-4 white--text" color="teal lighten-2"  @click="play">
+        <v-btn x-large class="mb-2 py-3 ml-4 white--text" color="teal lighten-2"  @click="timerGo">
               Start Break
             </v-btn>
         <v-data-table
@@ -132,7 +132,6 @@ export default {
     breakStart: false,
     pomodoroCount: 0,
     time: 0,
-    completeTime: 0,
     timer: null,
     todos: [],
     editedIndex: -1,
@@ -179,12 +178,12 @@ export default {
       this.$store.state.current = this.todos.indexOf(item)
       console.log(this.$store.state.current)
       if (!this.timer) {
-        this.play(item.count);
+        this.timerGo(item.count);
       } else {
         this.pause();
       }
     },
-    play() {
+    timerGo() {
       if (this.time <= 0) this.time = this.defaultTime;
       this.timer = setInterval(() => {
         this.time -= 1;
@@ -220,7 +219,7 @@ export default {
       this.pause()
     },
     
-    // get data from the store
+   
     initialize() {
       this.todos = this.$store.state.todos
     },
@@ -231,7 +230,8 @@ export default {
     },
     deleteItem(item) {
       const index = this.todos.indexOf(item);
-      confirm("are you sure you want to delete this todo?") &&
+      console.log(this.todos.indexOf(item).value)
+      confirm("are you sure you want to delete item?") &&
         this.todos.splice(index, 1);
     },
    
