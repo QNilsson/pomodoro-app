@@ -5,6 +5,10 @@
       <v-col>
         <p class="mt-0 pt-4 display-1 white--text">Completed Pomodoros</p>
         <p class="mt-0 pt-4 display-2 white--text">{{this.$store.state.totalTodo}}</p>
+        <v-row>
+          <p class="mt-0 ml-3 pt-4 display-1 white--text">Long Breaks Earned:</p>
+          <p class="mt-0 pt-4 display-1 white--text">{{this.$store.state.longBreak}}</p>
+        </v-row>
       </v-col>
       <v-col>
         <div>
@@ -211,6 +215,7 @@ export default {
         this.time = 60 * 20;
         this.$store.state.completed = 0; 
         alert("Congrats! you completed 4 pomodoros! Enjoy your 20 minute break")
+        this.$store.state.longBreak++
       } else {
         this.pomodoro
           ? (this.time = this.defaultTime)

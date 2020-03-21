@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     completed: 0, 
     totalTodo: 0, 
+    longBreak:0,
     current: null, 
     todos: [
       {
