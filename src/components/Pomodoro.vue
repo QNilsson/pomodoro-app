@@ -33,15 +33,15 @@
                 <p class="font-weight-medium green--text">PLAY</p>
               </button>
 
-              <button id="stop" class="mx-3 my-3" v-if="timer" @click="pause()">
+              <button class="mx-3 my-3" v-if="timer" @click="pause()">
                 <p class="font-weight-medium green--text">PAUSE</p>
               </button>
 
-              <button id="reset" class="mx-3 my-3" @click="reset()">
+              <button class="mx-3 my-3" @click="reset()">
                 <p class="font-weight-medium yellow--text">RESTART</p>
               </button>
 
-              <button id="reset" class="mx-3 my-3" @click="complete()">
+              <button  class="mx-3 my-3" @click="complete()">
                 <p class="display-1 red--text">SKIP TO 0:00</p>
               </button>
             </div>
